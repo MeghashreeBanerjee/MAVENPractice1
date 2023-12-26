@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import rahulshettyacademyMavenPractice.SeleniumFrameworkDesignMaven.PageObjectModel.CartPage;
+import rahulshettyacademyMavenPractice.SeleniumFrameworkDesignMaven.PageObjectModel.OrderPage;
 
 public class AbStractReusableComponent 
 {
@@ -24,6 +25,8 @@ public class AbStractReusableComponent
 	//driver.findElement(By.cssSelector("[routerlink*=cart]")).click();
 	@FindBy(css="[routerlink*=cart]")
 	WebElement cartHeader;
+	@FindBy(css="button[routerlink='/dashboard/myorders']")
+	WebElement orderHeader;
 	
 	//As headers can be common from other page 
 	public CartPage goToCartPage()
@@ -31,6 +34,13 @@ public class AbStractReusableComponent
 		cartHeader.click();
 		CartPage cartpage = new CartPage(driver);
 		return cartpage;
+	}
+	
+	public OrderPage goToOrderPage()
+	{
+		orderHeader.click();
+		OrderPage orderPage = new OrderPage(driver);
+		return orderPage;
 	}
 
 

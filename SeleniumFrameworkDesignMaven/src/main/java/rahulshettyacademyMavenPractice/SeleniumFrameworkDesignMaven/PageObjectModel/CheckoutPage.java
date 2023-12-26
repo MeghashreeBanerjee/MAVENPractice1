@@ -23,6 +23,7 @@ public class CheckoutPage extends AbStractReusableComponent
 		PageFactory.initElements(driver, this);
 	}
 
+	boolean nomatch;
 	//driver.findElement(By.cssSelector("input[placeholder='Select Country']")).sendKeys("ind");
 	@FindBy(css="input[placeholder='Select Country']")
 	WebElement typeCountryInput;
@@ -50,7 +51,7 @@ public class CheckoutPage extends AbStractReusableComponent
 	
 	//CHECKOUT PAGE	//	
 					
-		public void matchCountry(String country) throws InterruptedException
+		public boolean matchCountry(String country) throws InterruptedException
 		{
 			
 			for(WebElement opt :listOfMatchCountry)
@@ -62,8 +63,10 @@ public class CheckoutPage extends AbStractReusableComponent
 					//  System.out.println(opt.getText());
 					  break;
 				  }
-
+				  else
+					  nomatch=true;
 			  } 
+			return nomatch;
 		}
 
 		//DATE: STATIC DROPDOWN

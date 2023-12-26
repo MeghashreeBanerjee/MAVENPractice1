@@ -55,9 +55,7 @@ public class StandAloneRahulShetty
 
 	List<WebElement> products = driver.findElements(By.xpath("//div[contains(@class, 'mb-3')]"));
 
-	    WebElement prod = products.stream().filter(product->
-
-	product.findElement(By.xpath("//div[@class='card-body']//b")).getText().equals(productName)).findFirst().orElse(null);
+	    WebElement prod = products.stream().filter(product-> product.findElement(By.xpath("//div[@class='card-body']//b")).getText().equals(productName)).findFirst().orElse(null);
 
 	prod.findElement(By.xpath("//div[@class='card-body']/button[2]")).click();
 

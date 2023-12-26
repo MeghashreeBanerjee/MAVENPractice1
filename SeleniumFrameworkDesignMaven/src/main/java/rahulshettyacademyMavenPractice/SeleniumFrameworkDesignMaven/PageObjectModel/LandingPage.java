@@ -27,6 +27,9 @@ public class LandingPage extends AbStractReusableComponent
 	//driver.findElement(By.id("login")).click();
 	@FindBy(id="login")
 	WebElement submit;
+	//@FindBy(css="[class*='fluInOut']")
+	@FindBy(xpath="//*[@id='toast-container']")
+	WebElement errorMsg;
 	
 	//Actions
 	public GetProduct ActionsPerformed(String uID, String pwd)
@@ -36,6 +39,13 @@ public class LandingPage extends AbStractReusableComponent
 		submit.click();
 		GetProduct productcatalogue= new GetProduct(driver);
 		return productcatalogue;
+	}
+	
+	public String getErrorMsg() throws InterruptedException
+	{
+		Thread.sleep(10);
+		WaitForElementToAppearByDriver(errorMsg);
+		return errorMsg.getText();
 	}
 	
 	public void GoTo()
